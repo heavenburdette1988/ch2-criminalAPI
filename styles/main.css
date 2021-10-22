@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+
+/*Typography
+--------------------------------------------------------------*/
+body,
+button,
+input,
+select,
+textarea {
+	color: #404040;
+	font-family: "Comfortaa", Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Patua One", serif;
+  letter-spacing: 2px;
+}
+
+
+/* main container */
+.subCriminals{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	border: solid 2px black;
+}
+
+
+/* container in card holding the criminal */
+.criminalCard {  
+	padding-top: 2em;
+	border: 2px dotted black;
+	width: 20em;
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+	
+
+
+
+.subOfficers{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	border: solid 2px black;
+}
+
+.officerCard {
+	width: 20em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	border: solid 2px black;	
+	margin: 1em;
+}
+
+.subLocations{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	border: solid 2px black;
+}
