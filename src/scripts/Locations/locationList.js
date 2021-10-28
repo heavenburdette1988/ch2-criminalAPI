@@ -1,7 +1,7 @@
 import { useLocations, getLocations } from "./locationDateProvider.js";
 import { locations } from "./location.js";
 
-const contentTarget = document.querySelector(".subLocations")
+const contentTarget = document.querySelector(".contentContainer")
 
 export const LocationsList = () => {
     getLocations()
@@ -13,6 +13,12 @@ export const LocationsList = () => {
         locationArray.forEach((singleLocObj) => {
                 locHTML += locations(singleLocObj);
     })
-    contentTarget.innerHTML = locHTML
+    contentTarget.innerHTML = `<h2 class="locationHeader">Facilities</h2><div class="styledContainer">${locHTML}</div>`
     })
 }
+
+
+document.querySelector("#facilitiesnav-link").addEventListener("click", () => {
+    LocationsList()
+    })
+    

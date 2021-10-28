@@ -1,7 +1,7 @@
 import { officer } from './officer.js'
 import {getOfficers, useOfficers} from'./OfficerDataProvider.js'
 
-const contentTarget = document.querySelector(".subOfficers")
+const contentTarget = document.querySelector(".contentContainer")
 
 export const officerList = () => {
     getOfficers()
@@ -13,8 +13,13 @@ export const officerList = () => {
         officersArray.forEach((singleOfficerObj) => {
                 officerHTML += officer(singleOfficerObj);
         })
-        contentTarget.innerHTML = officerHTML
+        contentTarget.innerHTML = `<h2 class="officerHeader">Officers</h2><div class="styledContainer">${officerHTML}</div>`
     });
 };
 
 
+document.querySelector("#officers-nav-link").addEventListener("click", () => {
+    officerList()
+        
+    })
+    

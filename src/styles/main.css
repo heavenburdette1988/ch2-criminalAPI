@@ -19,15 +19,27 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 
+
+
+.navBar {
+	font-size: 2em;
+	
+}
+
+.dark-background{
+	background-color: #2b362e;
+	color: #fafcfb;
+  }
+
 /* main container */
-.subCriminals{
+
+.styledContainer {
+
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
-	border: solid 2px black;
+	
 }
-
-
 /* container in card holding the criminal */
 .criminalCard {  
 	padding-top: 2em;
@@ -38,27 +50,38 @@ h1,h2,h3,h4,h5,h6 {
 }
 	
 
+/* officer CSS */
 
-
-.subOfficers{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	border: solid 2px black;
-}
 
 .officerCard {
 	width: 20em;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
+	font-size: 1.5em;
 	border: solid 2px black;	
 	margin: 1em;
 }
 
-.subLocations{
-	display: flex;
+
+/* location css */
+
+
+
+.locationCard {
+	width: 25em;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
-	border: solid 2px black;
+	border: solid 2px black;	
+	margin: 1em;
+	
+} 
+
+
+.noteCard {
+	border: 2px black solid;
+	font-size: 2em;
+	
 }
+
+
+
+
+

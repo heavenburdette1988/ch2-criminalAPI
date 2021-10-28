@@ -8,7 +8,7 @@ export const getLocations = () => {
     return fetch("https://criminals.glassdale.us/facilities")
     .then (response => response.json())
     .then (locationFunction => {
-        console.table(locationFunction)
+        // console.table(locationFunction)
         locations = locationFunction
     })
 }
