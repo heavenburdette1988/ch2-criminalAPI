@@ -9,6 +9,7 @@ import { NoteForm } from './notes/Noteform.js'
 import { NoteList } from './notes/NoteList.js'
 
 import { ConvictionSelect } from './convictions/ConvictionSelect.js'
+import { OfficerSelect } from './officers/OfficerSelect.js'
 
 // getOfficers()
 // .then(() => {
@@ -37,3 +38,4 @@ darkModeButton.addEventListener("click", function(){
   NoteForm()
   // NoteList()
   ConvictionSelect()
+  OfficerSelect()

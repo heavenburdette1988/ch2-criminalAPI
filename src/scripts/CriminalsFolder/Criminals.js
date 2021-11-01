@@ -4,7 +4,8 @@ export const criminals = (Object) => {
  
     <h3 class="name">${Object.name}</h3>
     <div class="age"><a>Age: </a>${Object.age}</div>
-    <div class="EyeColor"><a>Crime: </a>${Object.conviction}</div>
+    <div class="crime"><a>Crime: </a>${Object.conviction}</div>
+    <div class="officer"><a>Officer: </a>${Object.arrestingOfficer}</div>
     <div class="start"><a>Term Start: </a>${new Date(Object.incarceration.start).toLocaleDateString('en-US')}</div>
     <div class="end"><a>Term End: </a>${new Date(Object.incarceration.end).toLocaleDateString('en-US')}</div>
    

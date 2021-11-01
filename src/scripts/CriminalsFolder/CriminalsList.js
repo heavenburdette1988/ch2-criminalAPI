@@ -1,30 +1,39 @@
 
 import { useConvictions } from "../convictions/convictionProvider.js"
 import { criminals } from "./Criminals.js"
-import {getCriminals,useCriminals} from "./CriminalsDataProvider.js"
+import { getCriminals,useCriminals } from "./CriminalsDataProvider.js"
+
 // import { ConvictionSelect } from "../convictions/ConvictionSelect.js"
 const contentTarget = document.querySelector(".contentContainer")
 
-export const criminalList = (crimeSelected) => {
+export const criminalList = (crimeSelected, officerFilter) => {
+    let criminalContainer = document.querySelector(".filters__crime")
+    
+let crimHTML = "";
+
     getCriminals()
     .then(() => {
         let criminalArray = useCriminals();
 
-        let crimHTML = "";
-
-        if(crimeSelected){
+        
+        if(crimeSelected === "crime"){
       
             criminalArray = criminalArray.filter(singleCriminalInLoop => {
              
-                return singleCriminalInLoop.conviction === crimeSelected
+                return singleCriminalInLoop.conviction === officerFilter
                 
             // write the condition here to filter for criminals whose crime matches the convictionFilter value
             })
-      
-          }
-
-        criminalArray.forEach((crimeSelected) => {
-                crimHTML += criminals(crimeSelected);
+               
+          } else if (crimeSelected === "officer") {
+                criminalArray = criminalArray.filter(singleCriminalInLoop => {
+                    return singleCriminalInLoop.arrestingOfficer === officerFilter
+                })
+            }
+               
+        
+        criminalArray.forEach((singleCriminal) => {
+                crimHTML += criminals(singleCriminal);
     })
     contentTarget.innerHTML = `<h2 class="criminalsHeader">Criminals</h2><div class="styledContainer">${crimHTML}</div>`
     })
@@ -38,6 +47,13 @@ criminalList()
 })
 
 
+// Nav Bar
+const navBarCriminals = document.querySelector("#criminals-nav-link")
+
+navBarCriminals.addEventListener("click", () => {
+    // invoke the function that prints the criminals
+       CriminalList ()
+})
 // export const CriminalList = (convictionFilter) => {
 //     let criminalListContainer = document.querySelector(".criminal-list");
   

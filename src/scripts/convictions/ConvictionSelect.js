@@ -7,21 +7,21 @@ import { criminalList } from "../CriminalsFolder/CriminalsList.js"
 import { getConvictions, useConvictions } from "./ConvictionProvider.js"
 
 // Get a reference to the DOM element where the <select> will be rendered
-const contentTarget = document.querySelector(".filters__crime")
+const contentTarget = document.querySelector(".filters__crime") //printing to html 
 
 export const ConvictionSelect = () => {
     // Get all convictions from application state
-    getConvictions()
+    getConvictions() //from conviction provider
     .then(() => {
     let convictionArray = useConvictions();
     // let convictionHTML = "";
-    render(convictionArray)
+    render(convictionArray) //
     })
     // const convictions = useConvictions()
     // render(convictions)
 }
 
-const render = convictionsCollection => {
+const render = convictionsCollection => { // calling render function
        //convictionsCollections is as parameter of an array
     /*
         Use interpolation here to invoke the map() method on
@@ -69,27 +69,7 @@ eventHub.addEventListener("change", (eventObject) => {
         console.log("You selected something from the crime dropdown")
         console.log("This is the crime that was selected: ", eventObject.target.value)
         // Your code goes here!
-        criminalList(eventObject.target.value) 
+        criminalList("crime", eventObject.target.value) 
     }
 })
 
-// export const crimeForm = () => {
-//     contentTarget.innerHTML = `<h3 class="name"></h3>
-//     <div class="arson">,</div>
-//     <div class="id"></div?`
-// }
-
-
-
-// const selectConviction = {
-//     name: document.querySelector(".name").value,
-//     arson: document.querySelector(".arson").value,
-//     id: document.querySelector(".id").value
-
-//     }
-//     console.log(selectConviction)
-//     document.querySelector(".name").value=""
-//     document.querySelector(".arson").value=""
-//     document.querySelector(".id").value=""
-
-// // }
