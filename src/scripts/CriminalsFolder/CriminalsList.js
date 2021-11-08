@@ -7,7 +7,7 @@ import { getCriminals,useCriminals } from "./CriminalsDataProvider.js"
 const contentTarget = document.querySelector(".contentContainer")
 
 export const criminalList = (crimeSelected, officerFilter) => {
-    let criminalContainer = document.querySelector(".filters__crime")
+    // let criminalContainer = document.querySelector(".filters__crime")
     
 let crimHTML = "";
 
