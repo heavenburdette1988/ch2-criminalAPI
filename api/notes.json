@@ -1,16 +1,6 @@
 {
   "notes": [
     {
-      "id": 1,
-      "DateofNote": "12/10/21",
-      "noteText": "Text Here",
-      "suspect": "text"
-    },
-    {
-      "noteText": "test",
-      "id": 2
-    },
-    {
       "DateofNote": "2021-10-13",
       "noteText": "test",
       "suspect": "test",
@@ -21,6 +11,12 @@
       "noteText": "test",
       "suspect": "test",
       "id": 4
+    },
+    {
+      "DateofNote": "2021-11-10",
+      "noteText": "tax evasion",
+      "suspect": "Kevin Haag",
+      "id": 5
     }
   ]
 }

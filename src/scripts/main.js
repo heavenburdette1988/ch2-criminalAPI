@@ -10,6 +10,7 @@ import { NoteList } from './notes/NoteList.js'
 
 import { ConvictionSelect } from './convictions/ConvictionSelect.js'
 import { OfficerSelect } from './officers/OfficerSelect.js'
+import { deleteNote } from './notes/NoteDataProvider.js'
 
 // getOfficers()
 // .then(() => {
@@ -39,3 +40,4 @@ darkModeButton.addEventListener("click", function(){
   // NoteList()
   ConvictionSelect()
   OfficerSelect()
+  // deleteNote()

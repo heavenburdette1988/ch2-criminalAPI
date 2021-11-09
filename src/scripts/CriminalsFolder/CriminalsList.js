@@ -50,10 +50,10 @@ criminalList()
 // Nav Bar
 const navBarCriminals = document.querySelector("#criminals-nav-link")
 
-navBarCriminals.addEventListener("click", () => {
-    // invoke the function that prints the criminals
-       CriminalList ()
-})
+// navBarCriminals.addEventListener("click", () => {
+//     // invoke the function that prints the criminals
+//        CriminalList ()
+// })
 // export const CriminalList = (convictionFilter) => {
 //     let criminalListContainer = document.querySelector(".criminal-list");
   

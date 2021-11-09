@@ -42,9 +42,9 @@ const render = convictionsCollection => { // calling render function
 }
 
 
-document.querySelector("#notes-nav-link").addEventListener("click", () => {
-    convictionsCollection()
-    })
+// document.querySelector("#notes-nav-link").addEventListener("click", () => {
+//     convictionsCollection()
+//     })
 
 
 

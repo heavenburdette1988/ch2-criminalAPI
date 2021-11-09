@@ -20,6 +20,8 @@ export const NoteList= () => {
 }
 
 
+
+
 document.querySelector("#notes-nav-link").addEventListener("click", () => {
     NoteList()
     })
