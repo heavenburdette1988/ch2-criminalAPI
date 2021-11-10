@@ -1,5 +1,6 @@
 import { deleteNote } from "./NoteDataProvider.js";
 import { NoteList } from "./NoteList.js";
+import { NoteEditForm } from "./NoteEditForm.js";
 
 export const notes = (noteObject) => {
     return `<section class ="noteCard">
@@ -29,10 +30,15 @@ eventHub.addEventListener("click", (eventObject) => {
  
 });
 
-const editEventHub = document.querySelector(".noteFormContainer")
+
+//Edit button eventlistener
+const editEventHub = document.querySelector(".contentContainer")
 editEventHub.addEventListener("click", (eventObject) => {
 
+  if(eventObject.target.id.startsWith("edit")) {
+
+    console.log("you clicked")
     const noteId = +eventObject.target.id.split("--")[1]
     NoteEditForm(noteId);
-    
+    }
 })
