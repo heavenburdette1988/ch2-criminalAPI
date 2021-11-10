@@ -17,6 +17,12 @@
       "noteText": "tax evasion",
       "suspect": "Kevin Haag",
       "id": 5
+    },
+    {
+      "DateofNote": "",
+      "noteText": "",
+      "suspect": "",
+      "id": 6
     }
   ]
 }
