@@ -11,7 +11,7 @@ import { NoteList } from './notes/NoteList.js'
 import { ConvictionSelect } from './convictions/ConvictionSelect.js'
 import { OfficerSelect } from './officers/OfficerSelect.js'
 import { deleteNote } from './notes/NoteDataProvider.js'
-
+import { NoteEditForm } from './notes/NoteEditForm.js'
 // getOfficers()
 // .then(() => {
 //  let officersArray = useOfficers()

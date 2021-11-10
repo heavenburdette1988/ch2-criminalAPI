@@ -8,6 +8,7 @@ export const notes = (noteObject) => {
     <div class="noteText"><a>Note: </a>${noteObject.noteText}</div>
     <div class="suspect"><a>Suspect: </a>${noteObject.suspect}</div>
     <button id="deleteNote--${noteObject.id}">Delete</button>
+    <button id="edit--${noteObject.id}">Edit</button>
     </section>`
 }
 
@@ -28,3 +29,10 @@ eventHub.addEventListener("click", (eventObject) => {
  
 });
 
+const editEventHub = document.querySelector(".noteFormContainer")
+editEventHub.addEventListener("click", (eventObject) => {
+
+    const noteId = +eventObject.target.id.split("--")[1]
+    NoteEditForm(noteId);
+    
+})
