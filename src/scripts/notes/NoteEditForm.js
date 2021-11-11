@@ -2,7 +2,7 @@ import {useNotes} from "./NoteDataProvider.js"
 import { updateNote } from "./NoteDataProvider.js";
 import { NoteList } from "./NoteList.js";
 
-import { NoteForm } from "./NoteForm.js";
+import { NoteForm } from "./Noteform.js";
 
 // We're going to print the edit form where the "add note" form usually goes. We could move it around on the page by changing our content target.
 const contentTarget = document.querySelector(".noteFormContainer")
@@ -12,7 +12,7 @@ export const NoteEditForm = (noteId) => {
     const allNotes = useNotes();
 
     // Find the note that we clicked on by its unique id
-    const noteWeWantToEdit = allNotes.find(singleNote => singleNote.id === noteId) //create the note that needs edits
+    const noteWeWantToEdit = allNotes.find(singleNote => singleNote.id === noteId) //when singlenote is equal to the Note ID print hereVVVV
    
     // Print the form
     // We'll use the HTML value attribute to pre-populate our form fields with the note's info
@@ -31,7 +31,7 @@ contentTarget.addEventListener("click", (event) => {
 
         // Make a new object representation of a note
         const editedNote = {
-            id: +event.target.id.split("--")[1], // how can you get the note's id?
+            id: +event.target.id.split("--")[1], // split on -- and pull index 1
             DateofNote: document.querySelector("#note-date").value, 
             noteText: document.querySelector("#note-text").value, 
             suspect: document.querySelector("#note-suspect").value

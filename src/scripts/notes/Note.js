@@ -5,7 +5,7 @@ import { NoteEditForm } from "./NoteEditForm.js";
 export const notes = (noteObject) => {
     return `<section class ="noteCard">
     <div id="id">ID: ${noteObject.id}</div>
-    <div class="DateOfNote" type="date" value="mm-dd-yyyy"><a>Date: </a>${noteObject.DateofNote}</div>
+    <div class="DateOfNote" type="date" value="mm-dd-yyyy">Date: ${new Date(noteObject.DateofNote).toLocaleDateString('en-us')}</div>
     <div class="noteText">Note: ${noteObject.noteText}</div>
     <div class="suspect">Suspect: ${noteObject.suspect}</div>
     <button id="deleteNote--${noteObject.id}">Delete</button>
@@ -34,7 +34,7 @@ eventHub.addEventListener("click", (eventObject) => {
 //Edit button eventlistener
 const editEventHub = document.querySelector(".contentContainer")
 editEventHub.addEventListener("click", (eventObject) => {
-
+  console.log(eventObject.target.id.split("--"))
   if(eventObject.target.id.startsWith("edit")) {
 
     console.log("you clicked")
