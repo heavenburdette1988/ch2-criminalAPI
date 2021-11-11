@@ -18,7 +18,7 @@ export const NoteEditForm = (noteId) => {
     // We'll use the HTML value attribute to pre-populate our form fields with the note's info
     contentTarget.innerHTML = `
         <h2>Edit Note</h2>
-        <input type="date" id="note-date" value="${noteWeWantToEdit.date}" />
+        <input type="date" id="note-date" value="${noteWeWantToEdit.DateofNote}" />
         <input type="text" value="${noteWeWantToEdit.noteText}" id="note-text" />
         <input type="text" value="${noteWeWantToEdit.suspect}" id="note-suspect"/>
         <button id="saveNoteChanges--${noteId}">Save Changes</button>

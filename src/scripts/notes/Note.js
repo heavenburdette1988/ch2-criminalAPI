@@ -4,10 +4,10 @@ import { NoteEditForm } from "./NoteEditForm.js";
 
 export const notes = (noteObject) => {
     return `<section class ="noteCard">
-    <div id="id">ID:${noteObject.id}</div>
-    <div class="DateOfNote"><a>Date: </a>${noteObject.DateofNote}</div>
-    <div class="noteText"><a>Note: </a>${noteObject.noteText}</div>
-    <div class="suspect"><a>Suspect: </a>${noteObject.suspect}</div>
+    <div id="id">ID: ${noteObject.id}</div>
+    <div class="DateOfNote" type="date" value="mm-dd-yyyy"><a>Date: </a>${noteObject.DateofNote}</div>
+    <div class="noteText">Note: ${noteObject.noteText}</div>
+    <div class="suspect">Suspect: ${noteObject.suspect}</div>
     <button id="deleteNote--${noteObject.id}">Delete</button>
     <button id="edit--${noteObject.id}">Edit</button>
     </section>`
