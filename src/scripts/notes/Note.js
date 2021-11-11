@@ -38,7 +38,7 @@ editEventHub.addEventListener("click", (eventObject) => {
   if(eventObject.target.id.startsWith("edit")) {
 
     console.log("you clicked")
-    const noteId = +eventObject.target.id.split("--")[1]
+    const noteId = +eventObject.target.id.split("--")[1]//I do not understand the split--
     NoteEditForm(noteId);
     }
 })
