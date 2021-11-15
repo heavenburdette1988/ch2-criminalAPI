@@ -10,28 +10,30 @@ const contentTarget = document.querySelector(".noteFormContainer")
 // Handle browser-generated click event in component
 document.querySelector("body").addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "saveNote") {
-        debugger
+        
             //^^^object representation of a note
         // let entryText = document.querySelector("#noteText").value
 
         // console.dir(entryText);
-
+//        
+    
          const newNote = {
 
             // noteText: entryText
             // Key/value pairs here
             DateofNote: document.querySelector("#noteDate").value,
             noteText: document.querySelector("#noteText").value,
-            suspect: document.querySelector("#suspect").value,
+            criminalId: document.querySelector("#noteForm--criminal").value,
             // suspectID: document.querySelector("#suspectId").value,
-           
+  
+
         }
             console.log(newNote)
             document.querySelector("#noteDate").value = ""
             document.querySelector("#noteText").value = ""
-            document.querySelector("#suspect").value = ""
-            // document.querySelector("#suspectId").value = ""
-        // }
+            // document.querySelector("#suspect").value = ""
+            document.querySelector("#noteForm--criminal").value = ""
+        
         // Make a new object representation of a note
        
         // const 
@@ -41,16 +43,23 @@ document.querySelector("body").addEventListener("click", clickEvent => {
     }
 })
 
-export const NoteForm = () => {
+
+export const NoteForm = (criminalCollection) => {
+    
+     
     contentTarget.innerHTML = `<fieldset><label for="Date"><input type="date" id="noteDate" ></label></fieldset>
     <fieldset><input type="text" id="noteText" placeholder="Note Goes Here"></fieldset>
-    <fieldset><input type="text" id="suspect" placeholder="Suspects"></fieldset>
-        
-        <button id="saveNote">Save Note</button>
-    `
-}  
+    
+    <select id="noteForm--criminal" class="criminalSelect">
+    <option value="">Please select a officer...</option>
+    ${
+        criminalCollection.map(criminalObject => {
+        const criminalType = criminalObject.name
+        return `<option value="${ criminalType.id }">${ criminalType.name }</option>` 
+        })
+    }
+    </select>
 
-
-
-
-
+        <button id="saveNote">Save Note</button>`
+      
+    }
