@@ -12,6 +12,7 @@ import { ConvictionSelect } from './convictions/ConvictionSelect.js'
 import { OfficerSelect } from './officers/OfficerSelect.js'
 import { deleteNote } from './notes/NoteDataProvider.js'
 import { NoteEditForm } from './notes/NoteEditForm.js'
+import { criminals } from './CriminalsFolder/Criminals.js'
 // getOfficers()
 // .then(() => {
 //  let officersArray = useOfficers()
@@ -35,7 +36,7 @@ darkModeButton.addEventListener("click", function(){
     // Add a class
     bodyElement.classList.toggle("dark-background")
   })
-  
+ 
   NoteForm()
   // NoteList()
   ConvictionSelect()
