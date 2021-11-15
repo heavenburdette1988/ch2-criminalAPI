@@ -10,6 +10,7 @@ const contentTarget = document.querySelector(".noteFormContainer")
 // Handle browser-generated click event in component
 document.querySelector("body").addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "saveNote") {
+        debugger
             //^^^object representation of a note
         // let entryText = document.querySelector("#noteText").value
 
@@ -41,7 +42,7 @@ document.querySelector("body").addEventListener("click", clickEvent => {
 })
 
 export const NoteForm = () => {
-    contentTarget.innerHTML = `<fieldset><label for="Date"><input type="date" id="noteDate"></label></feildset>
+    contentTarget.innerHTML = `<fieldset><label for="Date"><input type="date" id="noteDate" ></label></fieldset>
     <fieldset><input type="text" id="noteText" placeholder="Note Goes Here"></fieldset>
     <fieldset><input type="text" id="suspect" placeholder="Suspects"></fieldset>
         
