@@ -3,14 +3,16 @@ import { updateNote } from "./NoteDataProvider.js";
 import { NoteList } from "./NoteList.js";
 
 import { NoteForm } from "./Noteform.js";
+import { useCriminals } from "../CriminalsFolder/CriminalsDataProvider.js";
 
-// We're going to print the edit form where the "add note" form usually goes. We could move it around on the page by changing our content target.
 const contentTarget = document.querySelector(".noteFormContainer")
+// We're going to print the edit form where the "add note" form usually goes. We could move it around on the page by changing our content target.
 
 export const NoteEditForm = (noteId) => {
-    // Give this component access to our application's notes state
+   
+ // Give this component access to our application's notes state
     const allNotes = useNotes();
-
+const criminalsArray = useCriminals()
     // Find the note that we clicked on by its unique id
     const noteWeWantToEdit = allNotes.find(singleNote => singleNote.id === noteId) //when singlenote is equal to the Note ID print hereVVVV
    
@@ -20,7 +22,10 @@ export const NoteEditForm = (noteId) => {
         <h2>Edit Note</h2>
         <input type="date" id="note-date" value="${noteWeWantToEdit.DateofNote}" />
         <input type="text" value="${noteWeWantToEdit.noteText}" id="note-text" />
-        <input type="text" value="${noteWeWantToEdit.suspect}" id="note-suspect"/>
+        <select id="criminalEdit-FK" class="form-control criminalSelect">
+        <option value="0">Please select a Criminal</option>
+         ${criminalsArray.map(taco => taco.id === noteWeWantToEdit.criminalId ? `<option selected value="${ taco.id }">${ taco.name }</option>`: `<option value="${ taco.id }">${ taco.name }</option>` )}
+    </select>
         <button id="saveNoteChanges--${noteId}">Save Changes</button>
     `
 }// Form for changes
@@ -34,13 +39,13 @@ contentTarget.addEventListener("click", (event) => {
             id: +event.target.id.split("--")[1], // split on -- and pull index 1
             DateofNote: document.querySelector("#note-date").value, 
             noteText: document.querySelector("#note-text").value, 
-            suspect: document.querySelector("#note-suspect").value
+            criminalId: +document.querySelector("#criminalEdit-FK").value
         } // these ids come from the form for where we edit the note so it can save it
         
         // Send to json-server and refresh the list
         updateNote(editedNote)//this updates the edited note
         .then(NoteList)//This redisplays the updated list 
         .then(NoteForm)//this redisplays the form
-
+        
     }
 })

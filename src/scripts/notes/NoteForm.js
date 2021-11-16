@@ -24,7 +24,7 @@ document.querySelector("body").addEventListener("click", clickEvent => {
             // Key/value pairs here
             DateofNote: document.querySelector("#noteDate").value,
             noteText: document.querySelector("#noteText").value,
-            criminalId: document.querySelector("#noteForm--criminal").value,
+            criminalId: +document.querySelector("#noteForm--criminal").value,//+ always makes it a integer 
             // suspectID: document.querySelector("#suspectId").value,
   
 
@@ -33,7 +33,7 @@ document.querySelector("body").addEventListener("click", clickEvent => {
             document.querySelector("#noteDate").value = ""
             document.querySelector("#noteText").value = ""
             // document.querySelector("#suspect").value = ""
-            document.querySelector("#noteForm--criminal").value = ""
+            document.querySelector("#noteForm--criminal").value = 0;
         
         // Make a new object representation of a note
        
@@ -47,33 +47,33 @@ document.querySelector("body").addEventListener("click", clickEvent => {
 
 
 
-
-const nameSelect = criminalNames => {
-    return ` <select id="noteForm--criminal" class="criminalSelect">
-    <option value="">Please select a Criminal...</option>
-    ${criminalNames.map(criminalType => {
-        return `<option value="${ criminalType.id }">${ criminalType.name }</option>` 
-    })}
+// **********ask about the differences???****************
+// const nameSelect = criminalNames => {
+//     return ` <select id="noteForm--criminal" class="criminalSelect">
+//     <option value="">Please select a Criminal...</option>
+//     ${criminalNames.map(criminalType => {
+//         return `<option value="${ criminalType.id }">${ criminalType.name }</option>` 
+//     })}
     
-    </select>
-`
-}
+//     </select>
+// `
+// }
 
-export const NoteForm = () => {
-    return getCriminals()
-    .then(() => {
-        const names = useCriminals()
-        
-    
-     
-    contentTarget.innerHTML = `
+export const NoteForm = (criminalsArray) => {
+   
+   return  `
     
     <fieldset><label for="Date"><input type="date" id="noteDate" ></label></fieldset>
     <fieldset><input type="text" id="noteText" placeholder="Note Goes Here"></fieldset>
-    
-    ${nameSelect(names)}
+    <select id="noteForm--criminal" class="criminalSelect">
+    <option value="">Please select a Criminal...</option>
+    ${criminalsArray.map(taco => `<option value="${ taco.id }">${ taco.name }</option>`
+      )}
+     
+    </select>
         <button id="saveNote">Save Note</button>
         `      
-    })}
+        
+    }
 
     
