@@ -9,8 +9,8 @@ const contentTarget = document.querySelector(".contentContainer")
 const render = (noteCollection, criminalCollection) => {
     contentTarget.innerHTML = noteCollection.map(note => {
         // Find the related criminal
-        const relatedCriminal = criminalCollection.find(criminal => criminal.id === note.criminalId)
-
+        const relatedCriminal = criminalCollection.find(criminal => criminal.id === +note.criminalId)
+       
         return `
             <section class="note">
                 <h2>Note about ${relatedCriminal.name}</h2>

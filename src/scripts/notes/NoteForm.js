@@ -1,5 +1,6 @@
 import { NoteList } from "./NoteList.js" 
 import { saveNote } from"./NoteDataProvider.js"
+import { getCriminals, useCriminals } from "../CriminalsFolder/CriminalsDataProvider.js"
 
 
 //This form prints new entries and stores them to server
@@ -44,22 +45,35 @@ document.querySelector("body").addEventListener("click", clickEvent => {
 })
 
 
-export const NoteForm = (criminalCollection) => {
+
+
+
+const nameSelect = criminalNames => {
+    return ` <select id="noteForm--criminal" class="criminalSelect">
+    <option value="">Please select a Criminal...</option>
+    ${criminalNames.map(criminalType => {
+        return `<option value="${ criminalType.id }">${ criminalType.name }</option>` 
+    })}
+    
+    </select>
+`
+}
+
+export const NoteForm = () => {
+    return getCriminals()
+    .then(() => {
+        const names = useCriminals()
+        
     
      
-    contentTarget.innerHTML = `<fieldset><label for="Date"><input type="date" id="noteDate" ></label></fieldset>
+    contentTarget.innerHTML = `
+    
+    <fieldset><label for="Date"><input type="date" id="noteDate" ></label></fieldset>
     <fieldset><input type="text" id="noteText" placeholder="Note Goes Here"></fieldset>
     
-    <select id="noteForm--criminal" class="criminalSelect">
-    <option value="">Please select a officer...</option>
-    ${
-        criminalCollection.map(criminalObject => {
-        const criminalType = criminalObject.name
-        return `<option value="${ criminalType.id }">${ criminalType.name }</option>` 
-        })
-    }
-    </select>
+    ${nameSelect(names)}
+        <button id="saveNote">Save Note</button>
+        `      
+    })}
 
-        <button id="saveNote">Save Note</button>`
-      
-    }
+    
