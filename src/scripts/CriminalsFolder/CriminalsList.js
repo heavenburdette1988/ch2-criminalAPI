@@ -1,43 +1,86 @@
 
 import { useConvictions } from "../convictions/convictionProvider.js"
+import { getLocations, useLocations } from "../Locations/locationDateProvider.js"
+import { getCriminalFacilities, useCriminalFacilities } from "./CriminalFacilityProvider.js"
 import { criminals } from "./Criminals.js"
 import { getCriminals,useCriminals } from "./CriminalsDataProvider.js"
 
-// import { ConvictionSelect } from "../convictions/ConvictionSelect.js"
 const contentTarget = document.querySelector(".contentContainer")
 
-export const criminalList = (crimeSelected, officerFilter) => {
-    // let criminalContainer = document.querySelector(".filters__crime")
-    
-let crimHTML = "";
+export const criminalList = () => {
+    // Kick off the fetching of both collections of data
+    getLocations()
+        .then(getCriminals)
+        .then(getCriminalFacilities)
+        .then(
+            () => {
+                // Pull in the data now that it has been fetched
+                const facilities = useLocations()
+                const crimFac = useCriminalFacilities()
+                const criminals = useCriminals()
 
-    getCriminals()
-    .then(() => {
-        let criminalArray = useCriminals();
-
-        
-        if(crimeSelected === "crime"){
-      
-            criminalArray = criminalArray.filter(singleCriminalInLoop => {
-             
-                return singleCriminalInLoop.conviction === officerFilter
-                
-            // write the condition here to filter for criminals whose crime matches the convictionFilter value
-            })
-               
-          } else if (crimeSelected === "officer") {
-                criminalArray = criminalArray.filter(singleCriminalInLoop => {
-                    return singleCriminalInLoop.arrestingOfficer === officerFilter
-                })
+                // Pass all three collections of data to render()
+                render(criminals, facilities, crimFac)
             }
+        )
+}
+
+const render = (criminalsToRender, allFacilities, allRelationships) => {
+    // Step 1 - Iterate all criminals
+    contentTarget.innerHTML = criminalsToRender.map(
+        (criminalObject) => {
+            // Step 2 - Filter all relationships to get only ones for this criminal
+            const facilityRelationshipsForThisCriminal = allRelationships.filter(cf => cf.criminalId === criminalObject.id)
+
+            // Step 3 - Convert the relationships to facilities with map()
+            const facilities = facilityRelationshipsForThisCriminal.map(cf => {
+                const matchingFacilityObject = allFacilities.find(facility => facility.id === cf.facilityId)
+                return matchingFacilityObject
+            })
+
+            // Must pass the matching facilities to the Criminal component
+            return criminals(criminalObject, facilities)
+        }
+    ).join("")
+}
+
+
+
+// import { ConvictionSelect } from "../convictions/ConvictionSelect.js"
+// )
+
+// export const criminalList = (crimeSelected, officerFilter) => {
+//     // let criminalContainer = document.querySelector(".filters__crime")
+    
+// let crimHTML = "";
+
+//     getCriminals()
+//     .then(() => {
+//         let criminalArray = useCriminals();
+
+        
+//         if(crimeSelected === "crime"){
+      
+//             criminalArray = criminalArray.filter(singleCriminalInLoop => {
+             
+//                 return singleCriminalInLoop.conviction === officerFilter
+                
+//             // write the condition here to filter for criminals whose crime matches the convictionFilter value
+//             })
+               
+//           } else if (crimeSelected === "officer") {
+//                 criminalArray = criminalArray.filter(singleCriminalInLoop => {
+//                     return singleCriminalInLoop.arrestingOfficer === officerFilter
+//                 })
+//             }
                
         
-        criminalArray.forEach((singleCriminal) => {
-                crimHTML += criminals(singleCriminal);
-    })
-    contentTarget.innerHTML = `<h2 class="criminalsHeader">Criminals</h2><div class="styledContainer">${crimHTML}</div>`
-    })
-}
+//         criminalArray.forEach((singleCriminal) => {
+//                 crimHTML += criminals(singleCriminal);
+//     })
+//     contentTarget.innerHTML = `<h2 class="criminalsHeader">Criminals</h2><div class="styledContainer">${crimHTML}</div>`
+//     })
+// }
 
 // const navElement = document.querySelector("#criminals-nav-link")
 
